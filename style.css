@@ -1,0 +1,19 @@
+button {
+    height: 50px;
+    min-width: 50px;
+    font-size: xx-large;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+h1 {
+    font-size:12vw;
+}
+
+#speed_div{
+    text-align: right;
+}

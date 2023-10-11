@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Bingo Caller</title>
+</head>
+
+<body>
+    
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+    
+    <div class="grid-container">
+        <div>
+            <button id="play" type="button" onclick="play()" value="start">START</button>
+        </div>
+
+        <div id="speed_div">
+            <button id="slow" type="button" onclick="slower()">-</button>
+            <button id="speed">5</button>
+            <button id="fast" type="button" onclick="faster()">+</button>
+        </div>
+    </div>
+    
+    <div onclick="play()">
+        <h1 id="message">Loteria: <br>(Mexican Bingo)<br><br> Press the plus/minus buttons to adjust the speed.</h1>
+    </div>
+
+</body>
+</html>
