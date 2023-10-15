@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js"></script>
     
+
     <div class="grid-container">
         <div>
-            <button id="play" type="button" onclick="play()" value="start">START</button>
+            <button id="play" type="button" onclick="play()" value="start">READY</button>
         </div>
 
         <div id="speed_div">
@@ -23,8 +24,12 @@
         </div>
     </div>
     
-    <div onclick="play()">
-        <h1 id="message">Loteria: <br>(Mexican Bingo)<br><br> Press the plus/minus buttons to adjust the speed.</h1>
+    <div id="list_div" onclick="play()">
+        <h1 id="message">
+            Loteria: <br>(Mexican Bingo)
+            <br><br> Press here to start.
+            <br><br> Press the plus/minus buttons to adjust the speed.
+        </h1>
     </div>
 
 </body>
