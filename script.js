@@ -1,16 +1,16 @@
 //array of cards
 const cards = [
-    "El gallo", "El diablito", "La dama", "El catrín", "El paraguas",
-    "La sirena", "La escalera", "La botella", "El barríl", "El árbol",
-    "El melón", "El valiente", "El gorrito", "La muerte", "La pera",
-    "La bandera", "El bandolón", "El violoncello", "La garza", "El pajarito",
-    "La mano", "La bota", "La luna", "El cotorro", "El borracho",
-    "El negrito", "El corazón", "La sandía", "El tambor", "El camarón",
-    "Las jaras", "El músico", "La araña", "El soldado", "La estrella",
-    "El cazo", "El mundo", "El apache", "El nopal", "El alacrán",
-    "La rosa", "La calavera", "La campana", "El cantarito", "El venado",
-    "El sol", "La corona", "La chalupa", "El pino", "El pescado",
-    "La palma", "La maceta", "El arpa", "La rana"];
+    "el gallo", "el diablito", "la dama", "el catrín", "el paraguas",
+    "la sirena", "la escalera", "la botella", "el barríl", "el árbol",
+    "el melón", "el valiente", "el gorrito", "la muerte", "la pera",
+    "la bandera", "el bandolón", "el violoncello", "la garza", "el pajarito",
+    "la mano", "la bota", "la luna", "el cotorro", "el borracho",
+    "el negrito", "el corazón", "la sandía", "el tambor", "el camarón",
+    "las jaras", "el músico", "la araña", "el soldado", "la estrella",
+    "el cazo", "el mundo", "el apache", "el nopal", "el alacrán",
+    "la rosa", "la calavera", "la campana", "el cantarito", "el venado",
+    "el sol", "la corona", "la chalupa", "el pino", "el pescado",
+    "la palma", "la maceta", "el arpa", "la rana"];
 
     var msg = new SpeechSynthesisUtterance();
     msg.voice = window.speechSynthesis.getVoices()[0];
@@ -20,72 +20,63 @@ const cards = [
     speaker = window.speechSynthesis;
     var newCard = 0;
     var x = 0;
-    var card = 0;
+    var card = firstCard;//first card
+    var firstCard = 0;
     var myInterval;
     let speed = 5;
 
-function play2(){
-    
-    
-    // shuffle the cards only on START
-    if (document.querySelector('#play').innerHTML=="START"){
-    cards.sort(function(){return 0.5 - Math.random()});}
-    // for (let m = 0; m < 54; m++) {
-    // console.log((m+1)+" - "+cards[m]);
-    //}
-
-    //toggle the button
-         if (document.querySelector('#play').innerHTML=="START"){document.querySelector('#play').innerHTML="PAUSE"; playStatus = 0;}
-    else if (document.querySelector('#play').innerHTML=="PAUSE"){document.querySelector('#play').innerHTML="CONTINUE"; playStatus = 1;}
-    else if (document.querySelector('#play').innerHTML=="CONTINUE"){document.querySelector('#play').innerHTML="PAUSE"; playStatus = 2;}
-    
-    
-      //Call the cards 
-        loop1:
-        for (let card=newCard; card < 54; card++) {
-            // if (document.querySelector('#play').innerHTML=="CONTINUE"){break;}
-                setTimeout(function(){
-                
-                    
-                if (document.querySelector('#play').innerHTML=="PAUSE"){
-                document.getElementById("message").innerHTML=`<br>${card+1} ${cards[card]}`+ document.getElementById("message").innerHTML;  
-                msg.text = `${cards[card]}`;
-                
-                // window.speechSynthesis.speak(msg);
-                // } else {window.speechSynthesis.cancel(); newCard = card;}
-                
-                speaker.speak(msg);
-            } else {
-                speaker.cancel(); 
-                newCard = card;}
-            
-            }, 1000*card);
-        }
-    
-}
-
 function shuffle(){
-    if (document.querySelector('#play').innerHTML=="START"){
+    if (document.querySelector('#play').innerHTML=="READY"){
         cards.sort(function(){return 0.5 - Math.random()});
-        card=0;document.getElementById("message").innerHTML="";
+        card=firstCard;document.getElementById("message").innerHTML="";
         document.getElementById("speed").innerHTML=speed;
-    }
+        }
 }
 
 function buttonToggle(){
-             if (document.querySelector('#play').innerHTML=="START"){document.querySelector('#play').innerHTML="PAUSE";}
-        else if (document.querySelector('#play').innerHTML=="PAUSE"){document.querySelector('#play').innerHTML="CONTINUE";}
-        else if (document.querySelector('#play').innerHTML=="CONTINUE"){document.querySelector('#play').innerHTML="PAUSE";}
+    //if you press the center of the screen to start the game
+    if (document.querySelector('#play').innerHTML=="READY"){
+        document.querySelector('#play').innerHTML="PLAYING";
+        document.getElementById("play").style.background='green';
+        document.getElementById("play").style.color='white';
+    }
+
+    //if you press the center of the screen when is playing then it changes to paused 
+    else if (document.querySelector('#play').innerHTML=="PLAYING"){
+        document.querySelector('#play').innerHTML="PAUSED";
+        document.body.style.backgroundColor = "grey";
+        document.getElementById("play").style.background='red';
+        document.getElementById("play").style.color='black';
+    }
+
+    //if you press the center of the screen when is paused then it changes to playing
+    else if (document.querySelector('#play').innerHTML=="PAUSED"){
+        document.querySelector('#play').innerHTML="PLAYING";
+        document.body.style.backgroundColor = "white";
+        document.getElementById("play").style.background='green';
+        document.getElementById("play").style.color='white';
+    }
 }
 
 function callCards(){
-    if (document.querySelector('#play').innerHTML=="PAUSE"){
-        document.getElementById("message").innerHTML=`<br>${card+1} ${cards[card]}`+ document.getElementById("message").innerHTML;  
-        msg.text = `${cards[card]}`;
+    if (document.querySelector('#play').innerHTML=="PLAYING"){
+        
+      let img = document.getElementById('list_div');
+      
+      // Create image element
+      let dynamicImage = document.createElement('img');
+      
+      // Initialize the image source
+      dynamicImage.src = `./images/${cards[card]}.jpg`;
+        
+      //insert new image on top
+      img.insertBefore(dynamicImage, img.children[0]);   
+        
+        msg.text = `${cards[card]}`;// this is for the speechSynthesis
         speaker.speak(msg);
         if (card < 53){card++;
         }else{
-            document.querySelector('#play').innerHTML="START";
+            document.querySelector('#play').innerHTML="FINAL";
         }
     }
 }
