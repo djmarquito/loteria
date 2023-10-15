@@ -1,9 +1,3 @@
-button {
-    height: 50px;
-    min-width: 50px;
-    font-size: xx-large;
-}
-
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -11,9 +5,14 @@ button {
 }
 
 h1 {
-    font-size:12vw;
+    text-align: center;
+    font-size:10vw;
 }
 
 #speed_div{
     text-align: right;
+}
+
+#card, img{
+    width: 100%;
 }
