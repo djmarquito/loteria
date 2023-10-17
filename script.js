@@ -12,24 +12,22 @@ const cards = [
     "el sol", "la corona", "la chalupa", "el pino", "el pescado",
     "la palma", "la maceta", "el arpa", "la rana"];
 
-    var msg = new SpeechSynthesisUtterance();
-    msg.voice = window.speechSynthesis.getVoices()[0];
-    msg.lang = "es";//spanish-espanol
-    msg.rate = 1;//.1 - 10
-    msg.pitch = 1;//0 - 2
-    speaker = window.speechSynthesis;
-    var newCard = 0;
-    var x = 0;
-    var card = firstCard;//first card
-    var firstCard = 0;
-    var myInterval;
-    let speed = 5;
+var msg = new SpeechSynthesisUtterance();
+msg.voice = window.speechSynthesis.getVoices()[0];
+msg.lang = "es";//spanish-espanol
+msg.rate = 1;//.1 - 10
+msg.pitch = 1;//0 - 2
+speaker = window.speechSynthesis;
+var card;
+var myInterval;
+let speed = 5;
 
 function shuffle(){
     if (document.querySelector('#play').innerHTML=="READY"){
-        cards.sort(function(){return 0.5 - Math.random()});
-        card=firstCard;document.getElementById("message").innerHTML="";
-        document.getElementById("speed").innerHTML=speed;
+        cards.sort(function(){return 0.5 - Math.random()});//shuffle
+        card = 0;//start from the first card (0-53)
+        document.getElementById("message").innerHTML="";//remove the ready to start message
+        document.getElementById("speed").innerHTML=speed;//show the speed
         }
 }
 
@@ -55,6 +53,21 @@ function buttonToggle(){
         document.body.style.backgroundColor = "white";
         document.getElementById("play").style.background='green';
         document.getElementById("play").style.color='white';
+    }
+
+    //if you press the center of the screen when is final then it changes to ready
+    else if (document.querySelector('#play').innerHTML=="FINAL"){
+        document.querySelector('#play').innerHTML="READY";
+        document.body.style.backgroundColor = "white";
+        document.getElementById("play").style.background='white';
+        document.getElementById("play").style.color='black';
+
+        //remove all the images
+        document.querySelectorAll("#list_div img")
+        .forEach(img => img.remove());
+
+        //show the ready to start message
+        document.getElementById("message").innerHTML="Loteria: <br>(Mexican Bingo)<br><br> Press here to start.<br><br> Press the plus/minus buttons to adjust the speed.";        
     }
 }
 
