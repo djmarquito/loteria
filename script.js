@@ -20,7 +20,7 @@ msg.pitch = 1;//0 - 2
 speaker = window.speechSynthesis;
 var card;
 var myInterval;
-let speed = 5;
+let speed = 4;
 
 function shuffle(){
     if (document.querySelector('#play').innerHTML=="READY"){
