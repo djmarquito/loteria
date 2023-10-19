@@ -1,18 +1,37 @@
+#play {
+    height: fit-content;
+    margin: 4%;
+    padding: 2%;
+    width: fit-content;
+    font-size: clamp(1rem, 5vw, 6rem);
+}
+.speed_button{
+    
+    height: fit-content;
+    width: clamp(2rem, 8vw, 6rem);
+    font-size: clamp(1rem, 5vw, 6rem);
+    }
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
 }
 
 h1 {
     text-align: center;
-    font-size:10vw;
+    font-size: 4vh;
 }
 
 #speed_div{
+    margin: 5% 5% 0 0;
     text-align: right;
 }
 
 #card, img{
-    width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95vw;
+  max-height: 75vh;
+  margin-bottom: 32vh;
 }
