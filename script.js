@@ -42,7 +42,7 @@ function buttonToggle(){
     //if you press the center of the screen when is playing then it changes to paused 
     else if (document.querySelector('#play').innerHTML=="PLAYING"){
         document.querySelector('#play').innerHTML="PAUSED";
-        document.body.style.backgroundColor = "grey";
+        document.body.style.backgroundColor = "whitesmoke";
         document.getElementById("play").style.background='red';
         document.getElementById("play").style.color='black';
     }
