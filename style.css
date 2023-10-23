@@ -1,29 +1,33 @@
 #play {
-    height: fit-content;
-    margin: 4%;
-    padding: 2%;
+    margin-left: 5%;
     width: fit-content;
-    font-size: clamp(1rem, 5vw, 6rem);
+    font-size: clamp(2rem, 3vh, 6rem);
+    font-weight: bold;
 }
 .speed_button{
     
-    height: fit-content;
-    width: clamp(2rem, 8vw, 6rem);
-    font-size: clamp(1rem, 5vw, 6rem);
-    }
+    height: 100%;
+    width: clamp(3rem, 9vw, 7rem);
+    font-weight: bold;
+    font-size: clamp(2rem, 4vh, 4rem);
+    margin-left: 1vw;
+}
 
 .grid-container {
+    margin-top: 2vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-bottom: 2%;
 }
 
 h1 {
     text-align: center;
     font-size: 4vh;
+    margin: 5vw;
 }
 
 #speed_div{
-    margin: 5% 5% 0 0;
+    margin-right: 5%;
     text-align: right;
 }
 
@@ -35,3 +39,23 @@ h1 {
   max-height: 75vh;
   margin-bottom: 32vh;
 }
+
+#footer {
+    position: absolute;
+    font-size: 2vh;
+    font-family: "Montserrat";
+    font-weight: 400;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    height: 7svh;
+        
+}
+.fa-linkedin {color: #0A66C2;}
+.fa-youtube {color: #FF0000;}
+.fa-soundcloud {color: #F26F23;}
+.fa-github {color: #171515;}
+
+.social-media-icon {margin: 0 1vh;}
+
+.social-media-icon:hover {transform: scale(1.5);}
