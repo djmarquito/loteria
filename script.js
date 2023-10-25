@@ -45,6 +45,7 @@ function buttonToggle(){
         document.body.style.backgroundColor = "whitesmoke";
         document.getElementById("play").style.background='red';
         document.getElementById("play").style.color='black';
+        document.body.style.overflow='visible';
     }
 
     //if you press the center of the screen when is paused then it changes to playing
@@ -53,6 +54,8 @@ function buttonToggle(){
         document.body.style.backgroundColor = "white";
         document.getElementById("play").style.background='green';
         document.getElementById("play").style.color='white';
+        document.body.scrollIntoView(document.querySelector('.header'));
+        document.body.style.overflow='hidden';
     }
 
     //if you press the center of the screen when is final then it changes to ready
