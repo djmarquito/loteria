@@ -1,34 +1,29 @@
-#play {
-    margin-left: 5%;
-    width: fit-content;
-    font-size: clamp(2rem, 3vh, 6rem);
-    font-weight: bold;
-}
-.speed_button{
-    
-    height: 100%;
-    width: clamp(3rem, 9vw, 7rem);
-    font-weight: bold;
-    font-size: clamp(2rem, 4vh, 4rem);
-    margin-left: 1vw;
+#header {
+    height: 10dvh;
+    padding-top: 2dvh;
 }
 
-.grid-container {
-    margin-top: 2vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-bottom: 2%;
+#play {
+    position: fixed;
+    left: 2.5vw;
+    font-size: 4dvh;
+    width: 20dvh;
+}
+.speed_button{
+    font-size: 4dvh;
+    margin-left: 1.5vw;
+    width: 6dvh;
 }
 
 h1 {
     text-align: center;
-    font-size: 4vh;
+    font-size: 3vh;
     margin: 5vw;
 }
 
 #speed_div{
-    margin-right: 5%;
-    text-align: right;
+    position: fixed;
+    right: 2.5vw;
 }
 
 #card, img{
@@ -36,21 +31,20 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   max-width: 95vw;
-  max-height: 75vh;
-  margin-bottom: 32vh;
+  max-height: 75dvh;
+  margin-bottom: 32dvh;
 }
 
 #footer {
-    position: absolute;
+    position: fixed;
     font-size: 2vh;
     font-family: "Montserrat";
     font-weight: 400;
     text-align: center;
     width: 100%;
-    bottom: 0;
-    height: 7svh;
-        
+    bottom: 1dvh;
 }
+
 .fa-linkedin {color: #0A66C2;}
 .fa-youtube {color: #FF0000;}
 .fa-soundcloud {color: #F26F23;}
