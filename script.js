@@ -12,15 +12,36 @@ const cards = [
     "el sol", "la corona", "la chalupa", "el pino", "el pescado",
     "la palma", "la maceta", "el arpa", "la rana"];
 
-var msg = new SpeechSynthesisUtterance();
-msg.voice = window.speechSynthesis.getVoices()[0];
-msg.lang = "es";//spanish-espanol
+const msg = new SpeechSynthesisUtterance();
+const voicesList = window.speechSynthesis.getVoices();
+
+msg.lang = "es-MX";//spanish-espanol
 msg.rate = 1;//.1 - 10
 msg.pitch = 1;//0 - 2
-speaker = window.speechSynthesis;
+
 var card;
 var myInterval;
 let speed = 4;
+
+let iphone = true; 
+let shuffled = false;
+
+function iPhone(){
+    let hasEnabledVoice = false;
+
+    document.addEventListener('click', () => {
+      if (hasEnabledVoice) {
+        return;
+      }
+       
+    msg.voice = voicesList.find((voice) => voice.lang === 'es-MX')
+    msg.lang = 'es-MX'  
+    msg.volume = 0;
+    speechSynthesis.speak(msg);
+    msg.volume = 1;
+      hasEnabledVoice = true;
+    }); 
+}
 
 function shuffle(){
     if (document.querySelector('#play').innerHTML=="READY"){
@@ -37,6 +58,7 @@ function buttonToggle(){
         document.querySelector('#play').innerHTML="PLAYING";
         document.getElementById("play").style.background='green';
         document.getElementById("play").style.color='white';
+        document.body.style.overflow='hidden';
     }
 
     //if you press the center of the screen when is playing then it changes to paused 
@@ -54,7 +76,7 @@ function buttonToggle(){
         document.body.style.backgroundColor = "white";
         document.getElementById("play").style.background='green';
         document.getElementById("play").style.color='white';
-        document.body.scrollIntoView(document.querySelector('.header'));
+        document.body.scrollIntoView(document.querySelector('#header'));
         document.body.style.overflow='hidden';
     }
 
@@ -69,8 +91,16 @@ function buttonToggle(){
         document.querySelectorAll("#list_div img")
         .forEach(img => img.remove());
 
+        //cards NOT shuffled - so it shuffles when you re-start the game 
+        shuffled = false;
+
         //show the ready to start message
-        document.getElementById("message").innerHTML="Loteria: <br>(Mexican Bingo)<br><br> Press here to start.<br><br> Press the plus/minus buttons to adjust the speed.";        
+        document.getElementById("message").innerHTML="Loteria: <br>(Mexican Bingo)\
+        <br><br> Press the card to pause.\
+        <br><br> Press the card again to continue.\
+        <br><br> Scroll down when paused.\
+        <br><br> Press the plus/minus buttons to adjust the speed.\
+        <br><br> Press here to start.";        
     }
 }
 
@@ -86,10 +116,17 @@ function callCards(){
       dynamicImage.src = `./images/${cards[card]}.jpg`;
         
       //insert new image on top
-      img.insertBefore(dynamicImage, img.children[0]);   
+      img.insertBefore(dynamicImage, img.children[0]); 
+      
+      //make sure is scrolled UP!
+      document.body.scrollIntoView(document.querySelector('#header'));
+
+      //...and the scrolling is OFF!
+      document.body.style.overflow='hidden';
         
         msg.text = `${cards[card]}`;// this is for the speechSynthesis
-        speaker.speak(msg);
+        
+        speechSynthesis.speak(msg);
         if (card < 53){card++;
         }else{
             document.querySelector('#play').innerHTML="FINAL";
@@ -104,7 +141,8 @@ function cardCaller(){
 }
 
 function play(){
-    shuffle();
+    if (iphone){iPhone();iphone=false;}
+    if (!shuffled){shuffle();shuffled=true;}
     buttonToggle();
     cardCaller();
 }
