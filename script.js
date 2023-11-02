@@ -15,7 +15,6 @@ const cards = [
 const msg = new SpeechSynthesisUtterance();
 const voicesList = window.speechSynthesis.getVoices();
 
-msg.lang = "es-MX";//spanish-espanol
 msg.rate = 1;//.1 - 10
 msg.pitch = 1;//0 - 2
 
@@ -34,8 +33,7 @@ function iPhone(){
         return;
       }
        
-    msg.voice = voicesList.find((voice) => voice.lang === 'es-MX')
-    msg.lang = 'es-MX'  
+    msg.lang = 'es-ES'  
     msg.volume = 0;
     speechSynthesis.speak(msg);
     msg.volume = 1;
