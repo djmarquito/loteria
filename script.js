@@ -32,8 +32,15 @@ function iPhone(){
       if (hasEnabledVoice) {
         return;
       }
-       
-    msg.lang = 'es-ES'  
+
+    if (navigator.userAgent.match(/iPhone|iPad|iPod|Macintosh/)) {
+    // Code for Apple devices
+    msg.lang = 'es-ES';
+    } else {
+    // Code for other devices
+    msg.lang = 'es-MX';
+    }
+          
     msg.volume = 0;
     speechSynthesis.speak(msg);
     msg.volume = 1;
