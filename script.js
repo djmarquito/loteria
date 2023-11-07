@@ -25,6 +25,8 @@ let speed = 4;
 let iphone = true; 
 let shuffled = false;
 
+window.onload = function(){document.getElementById("year").innerHTML = new Date().getFullYear();}
+
 function iPhone(){
     let hasEnabledVoice = false;
 
