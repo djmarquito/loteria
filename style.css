@@ -34,6 +34,11 @@ h1 {
   max-width: 95vw;
   max-height: 75dvh;
   margin-bottom: 32dvh;
+  animation: zoom 0.5s;
+}
+
+@keyframes zoom {
+    0% {transform: scale(0);}
 }
 
 #footer {
@@ -54,4 +59,4 @@ h1 {
 
 .social-media-icon {margin: 0 1vh;}
 
-.social-media-icon:hover {transform: scale(1.5);}
+.social-media-icon:hover {transform: scale(2);}
