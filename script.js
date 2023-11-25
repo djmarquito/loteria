@@ -120,7 +120,7 @@ function callCards(){
       let dynamicImage = document.createElement('img');
       
       // Initialize the image source
-      dynamicImage.src = `./images/${cards[card]}.jpg`;
+      dynamicImage.src = `./images/${cards[card]}.webp`;
         
       //insert new image on top
       img.insertBefore(dynamicImage, img.children[0]); 
