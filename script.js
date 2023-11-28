@@ -27,6 +27,11 @@ let shuffled = false;
 
 window.onload = function(){document.getElementById("year").innerHTML = new Date().getFullYear();}
 
+// To prevent accidental web application re-load
+window.onbeforeunload = function() {
+    return "Data will be lost if you leave the page, are you sure?";
+};
+
 function iPhone(){
     let hasEnabledVoice = false;
 
