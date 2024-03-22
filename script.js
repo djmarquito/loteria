@@ -106,6 +106,9 @@ function buttonToggle(){
         //cards NOT shuffled - so it shuffles when you re-start the game 
         shuffled = false;
 
+        speed = 4;//reset the speed to 4
+        document.getElementById("speed").innerHTML=speed;//show the speed
+
         //show the ready to start message
         document.getElementById("message").innerHTML="Loteria: <br>(Mexican Bingo)\
         <br><br> Press the card to pause.\
