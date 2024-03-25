@@ -60,6 +60,7 @@ function shuffle(){
         cards.sort(function(){return 0.5 - Math.random()});//shuffle
         card = 0;//start from the first card (0-53)
         document.getElementById("message").innerHTML="";//remove the ready to start message
+        speed = 4;//reset the speed to 4
         document.getElementById("speed").innerHTML=speed;//show the speed
         }
 }
@@ -105,9 +106,6 @@ function buttonToggle(){
 
         //cards NOT shuffled - so it shuffles when you re-start the game 
         shuffled = false;
-
-        speed = 4;//reset the speed to 4
-        document.getElementById("speed").innerHTML=speed;//show the speed
 
         //show the ready to start message
         document.getElementById("message").innerHTML="Loteria: <br>(Mexican Bingo)\
