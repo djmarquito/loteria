@@ -62,6 +62,8 @@ function shuffle(){
         document.getElementById("message").innerHTML="";//remove the ready to start message
         speed = 4;//reset the speed to 4
         document.getElementById("speed").innerHTML=speed;//show the speed
+        clearInterval(myInterval);
+        myInterval = setInterval(callCards, (11-speed)*1000);
         }
 }
 
