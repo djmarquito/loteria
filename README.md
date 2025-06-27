@@ -1,6 +1,3 @@
-
---- PARA ESPAÑOL (LÍNEA 65) ---
-
 # 🎴 Mexican Lotería Web App
 
 Welcome to the **Mexican Lotería Web App** – a digital version of the traditional Lotería game that eliminates the need for physical cards! 
