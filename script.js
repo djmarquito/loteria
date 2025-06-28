@@ -65,7 +65,7 @@ function iPhone(){
 function shuffle(){
     if (document.querySelector('#play').innerHTML=="READY"){
         cards.sort(function(){return 0.5 - Math.random()});//shuffle
-        card = 50;//start from the first card (0-53)
+        card = 0;//start from the first card (0-53)
         document.getElementById("message").innerHTML="";//remove the ready to start message
         speed = 4;//reset the speed to 4
         document.getElementById("speed").innerHTML=speed;//show the speed
