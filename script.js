@@ -14,7 +14,10 @@ const cards = [
 
 const msg = new SpeechSynthesisUtterance();
 const voicesList = window.speechSynthesis.getVoices();
+// const lang = 'es-MX'
 
+// msg.voice = speechSynthesis.getVoices()[0];
+//msg.lang = "es-ES";//spanish-espanol
 msg.rate = 1;//.1 - 10
 msg.pitch = 1;//0 - 2
 
@@ -39,15 +42,19 @@ function iPhone(){
       if (hasEnabledVoice) {
         return;
       }
-
+       
+    // msg.voice = voicesList.find((voice) => voice.lang === 'es-ES')
+    // msg.voice = window.speechSynthesis.getVoices().filter(voice => voice.name === 'es-ES')[0];
+    
     if (navigator.userAgent.match(/iPhone|iPad|iPod|Macintosh/)) {
-    // Code for Apple devices
-    msg.lang = 'es-ES';
-    } else {
-    // Code for other devices
-    msg.lang = 'es-MX';
+        // Code for Apple devices
+        msg.lang = 'es-ES';
+        } else {
+        // Code for other devices
+        msg.voice = window.speechSynthesis.getVoices().filter(voice => voice.name === 'es-MX')[1];
+        msg.lang = 'es-MX';
     }
-          
+    
     msg.volume = 0;
     speechSynthesis.speak(msg);
     msg.volume = 1;
@@ -58,7 +65,7 @@ function iPhone(){
 function shuffle(){
     if (document.querySelector('#play').innerHTML=="READY"){
         cards.sort(function(){return 0.5 - Math.random()});//shuffle
-        card = 0;//start from the first card (0-53)
+        card = 50;//start from the first card (0-53)
         document.getElementById("message").innerHTML="";//remove the ready to start message
         speed = 4;//reset the speed to 4
         document.getElementById("speed").innerHTML=speed;//show the speed
@@ -79,10 +86,10 @@ function buttonToggle(){
     //if you press the center of the screen when is playing then it changes to paused 
     else if (document.querySelector('#play').innerHTML=="PLAYING"){
         document.querySelector('#play').innerHTML="PAUSED";
-        document.body.style.backgroundColor = "whitesmoke";
+        document.body.style.backgroundColor = "lightgreen";
         document.getElementById("play").style.background='red';
         document.getElementById("play").style.color='black';
-        document.body.style.overflow='visible';
+        document.body.style.overflow='visible';//Scrolling enabled
     }
 
     //if you press the center of the screen when is paused then it changes to playing
@@ -92,7 +99,7 @@ function buttonToggle(){
         document.getElementById("play").style.background='green';
         document.getElementById("play").style.color='white';
         document.body.scrollIntoView(document.querySelector('#header'));
-        document.body.style.overflow='hidden';
+        document.body.style.overflow='hidden'; //Scrolling disabled
     }
 
     //if you press the center of the screen when is final then it changes to ready
@@ -111,11 +118,11 @@ function buttonToggle(){
 
         //show the ready to start message
         document.getElementById("message").innerHTML="Loteria: <br>(Mexican Bingo)\
-        <br><br> Press the card to pause.\
-        <br><br> Press the card again to continue.\
+        <br><br> Touch the screen to start.\
+        <br><br> Touch it again to pause.\
+        <br><br> Touch it again to continue.\
         <br><br> Scroll down when paused.\
-        <br><br> Press the plus/minus buttons to adjust the speed.\
-        <br><br> Press here to start.";        
+        <br><br> Adjust the speed on the top right.";        
     }
 }
 
@@ -140,11 +147,13 @@ function callCards(){
       document.body.style.overflow='hidden';
         
         msg.text = `${cards[card]}`;// this is for the speechSynthesis
-        
+        // speaker.speak(msg);
+        // speechSynthesis.lang="es";
         speechSynthesis.speak(msg);
         if (card < 53){card++;
         }else{
             document.querySelector('#play').innerHTML="FINAL";
+            document.body.style.overflow='visible';//Scrolling enabled
         }
     }
 }
